@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edge-service-1
+spec:
+  template:
+    spec:
+      containers:
+        - name: edge-service-1
+          volumeMounts:
+            - name: redis-credentials-volume-1
+              mountPath: /workspace/secrets/postgres
+            - name: keycloak-client-credentials-volume-1
+              mountPath: /workspace/secrets/keycloak-client
+            - name: keycloak-issuer-client-secret-volume-1
+              mountPath: /workspace/secrets/keycloak-issuer
+      volumes:
+        - name: redis-credentials-volume-1
+          secret:
+            secretName: polar-redis-credentials
+        - name: keycloak-client-credentials-volume-1
+          secret:
+            secretName: polar-keycloak-client-credentials
+        - name: keycloak-issuer-client-secret-volume-1
+          secret:
+            secretName: keycloak-issuer-client-secret
