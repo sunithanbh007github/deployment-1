@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 2s
+
+scrape_configs:
+  - job_name: 'edge-service-1'
+    scrape_interval: 2s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'edge-service-1:9000' ]
+  - job_name: 'catalog-service-1'
+    scrape_interval: 2s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'catalog-service-1:9001' ]
+  - job_name: 'order-service-1'
+    scrape_interval: 2s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'order-service-1:9002' ]
+  - job_name: 'dispatcher-service-1'
+    scrape_interval: 2s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'dispatcher-service-1:9003' ]  
